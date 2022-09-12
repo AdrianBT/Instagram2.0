@@ -1,5 +1,5 @@
 import React from 'react';
-import { getProviders, signIn as SignIntoProviders, useSession} from "next-auth/react";
+import { getProviders, signIn as SignIntoProviders} from "next-auth/react";
 import Header from '../../components/Header';
 
 
@@ -47,3 +47,6 @@ export async function getServerSideProps() {
 
 
 export default signIn
+
+{/* get us the object back the we past in the values for. GetProviders() gets us back the providers and returns it back to the signin*/}
+{/* looping through the provider and coming back with the name and id of the provider*/}

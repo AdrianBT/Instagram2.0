@@ -13,6 +13,7 @@ function Posts() {
     const unsubscribe = onSnapshot(query(collection(db, 'post'), orderBy('timestamp', 'desc')), snapshot => {
           setPosts(snapshot.docs);
         });
+        //everytime when value in the backend changes it updates it 
         return unsubscribe;
     }, [db])
     

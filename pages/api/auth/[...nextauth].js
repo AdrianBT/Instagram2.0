@@ -2,6 +2,8 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import DiscordProvider from "next-auth/providers/discord";
 
+
+
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
@@ -12,8 +14,7 @@ export default NextAuth({
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET
-    })
-    
+    }),
     // ...add more providers here
   ],
 
@@ -24,13 +25,19 @@ export default NextAuth({
   async session({ session, token, user }) {
     // Send properties to the client, like an access_token from a provider.
     session.user.username = session.user.name
-        .split(" ")
-        .join("")
+        .split(" ") //adrian Uchiha
+        .join("")   //adrianUchiha
         .toLocaleLowerCase;
+
+
     
-        session.user.uid = token.sub;
+        session.user.uid = token.sub; // token.sub is the information from google 
         return session
    },
   },
 
 });
+
+{/* callbacks responsible for creating that session for the user that signin */}
+
+ 

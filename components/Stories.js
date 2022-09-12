@@ -5,13 +5,12 @@ import Story from './Story';
 import {useSession} from "next-auth/react"
 
 function Stories() {
-    const [suggestions, setSuggestions] = useState([]); // react hook
+    const [suggestions, setSuggestions] = useState([]); // react hook that allow you too update the value and rerender a part of the webpage 
     const {data: session} = useSession(); 
 
     // causing side-effects
     useEffect(() => {
-        // dummy value
-        // but in reality it would be a network request
+     
         const suggestions = [...Array(20)].map((_, i) => ({
             ...faker.helpers.contextualCard(),
             id: i,
@@ -20,7 +19,7 @@ function Stories() {
         setSuggestions(suggestions);
 
     }, [])
-    // useEffect(function, dependency);
+    
  
  
    return (
@@ -36,7 +35,7 @@ function Stories() {
 
         {suggestions.map((profile) => (
             <Story 
-                key={profile.id} 
+                key={profile.id} // adding a ket pervents it from rerender the whole thing and just adds/rerenders the news element 
                 img={profile.avatar} 
                 username={profile.username}
             />

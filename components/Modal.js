@@ -13,10 +13,10 @@ import {ref, getDownloadURL, uploadString} from "@firebase/storage"
 function Modal() {
     const {data: session } = useSession();
     const [open, setOpen] = useRecoilState(modalState);
-    const filePickerRef = useRef(null);
-    const captionRef = useRef(null);
+    const filePickerRef = useRef(null); //points towards input type file
+    const captionRef = useRef(null); //points towards input type text
     const [Loading, setLoading] = useState(false);
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFile, setSelectedFile] = useState(null);// tracks the selected file and store it in the state
 
     const uploadPost = async () => {
         if(Loading) return;
@@ -46,7 +46,7 @@ const docRef = await addDoc(collection(db, "post"),
 
             const downloadURL = await getDownloadURL(imageRef);
 
-            await updateDoc(doc(db,"post", docRef.id), {
+            await updateDoc(doc(db,"posts", docRef.id), {
                 image: downloadURL,
             });
         }
@@ -58,6 +58,7 @@ const docRef = await addDoc(collection(db, "post"),
     };
 
 
+// make a file reader give it a variable of reader. Get the file the user selected. Get the file in a object so it can be store in a state.
     const addImageToPost = (e) => {
         const reader = new FileReader();
         if (e.target.files[0]) {

@@ -11,14 +11,14 @@ import {
 import { HomeIcon } from "@heroicons/react/solid";
 import { signIn, signOut,useSession} from "next-auth/react"
 import { useRouter } from 'next/router';
-import {useRecoilState} from "recoil"
-import {modalState} from "../atoms/modalAtom"
+import {useRecoilState} from "recoil" // global state management tool
+import {modalState} from "../atoms/modalAtom" //global state management tool
 
 
 function Header() {
 
     const {data: session, status} = useSession();
-    const [open, setOpen] = useRecoilState(modalState);
+    const [open, setOpen] = useRecoilState(modalState); //gives you the value and you can update it... 
     const router = useRouter();
 
 
@@ -103,3 +103,7 @@ function Header() {
 
 export default Header
 
+
+
+{/* import Image from 'next/image' have to whitelist the domains we want in nextconfig.js the middle sever compresses 
+the image into webp which are images that are alot smaller but contain the same level of quality  */}

@@ -10,3 +10,6 @@ module.exports = {
   },
   nextConfig
 };
+
+
+/* Have to restart server everytime you mess with the config file */ 

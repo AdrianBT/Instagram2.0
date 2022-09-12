@@ -13,3 +13,6 @@ function MyApp({ Component, pageProps: {session, ...pageProps} }) {
 }
 
 export default MyApp
+
+{/* sessionProvider keeps the session updated and synced between tabs/windows  */}
+{/* surronding it as a gobal store so we can get the data whereever we want  */}

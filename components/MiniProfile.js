@@ -3,7 +3,7 @@ import {signOut, useSession} from "next-auth/react"
 
 function MiniProfile() {
 
-  const {data: session} = useSession();
+  const {data: session} = useSession(); // pulls in the information using session 
   console.log(session);
 
   return (
